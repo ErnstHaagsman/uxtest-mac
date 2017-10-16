@@ -1,0 +1,34 @@
+---
+- hosts: localhost
+  become: no
+  vars:
+    user: pyconde
+    workdir: "/Users/{{ user }}/Documents/scripts"
+    code_checkout: "{{ workdir }}/code"
+    code_desktop: "/Users/{{ user }}/Desktop/code"
+  tasks:
+    - name: Get the code from GitHub
+      git:
+        repo: https://github.com/ErnstHaagsman/selenium_experiment.git
+        dest: "{{ code_checkout }}"
+        update: no
+        version: bugs
+        force: yes
+
+    - name: Remove previous version, if applicable
+      file:
+        path: "{{ code_desktop }}"
+        state: absent
+
+    - name: Create code directory on desktop
+      file:
+        path: "{{ code_desktop }}"
+        state: directory
+
+    - name: Copy a version of the code to the desktop
+      command: "cp -R {{code_checkout}}/ {{code_desktop}}"
+
+    - name: Remove .git directory
+      file:
+        path: "{{ code_desktop }}/.git"
+        state: absent
