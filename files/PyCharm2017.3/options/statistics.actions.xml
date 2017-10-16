@@ -1,0 +1,26 @@
+<application>
+  <component name="ActionsCollector">
+    <counts>
+      <entry action="EditorBackSpace" count="122" />
+      <entry action="EditorCopy" count="1" />
+      <entry action="EditorDown" count="31" />
+      <entry action="EditorDownWithSelection" count="6" />
+      <entry action="EditorEnter" count="48" />
+      <entry action="EditorIndentSelection" count="1" />
+      <entry action="EditorLeft" count="24" />
+      <entry action="EditorLeftWithSelection" count="1" />
+      <entry action="EditorLineEnd" count="2" />
+      <entry action="EditorLineEndWithSelection" count="1" />
+      <entry action="EditorLineStartWithSelection" count="1" />
+      <entry action="EditorNextWordWithSelection" count="1" />
+      <entry action="EditorPaste" count="2" />
+      <entry action="EditorPreviousWordWithSelection" count="5" />
+      <entry action="EditorRight" count="17" />
+      <entry action="EditorRightWithSelection" count="3" />
+      <entry action="EditorTab" count="27" />
+      <entry action="EditorUp" count="17" />
+      <entry action="NewDir" count="1" />
+      <entry action="NewFile" count="2" />
+    </counts>
+  </component>
+</application>

@@ -1,0 +1,33 @@
+<application>
+  <component name="RecentDirectoryProjectsManager">
+    <option name="recentPaths">
+      <list>
+        <option value="$USER_HOME$/Documents/scripts/ux_test" />
+      </list>
+    </option>
+    <option name="openPaths">
+      <list>
+        <option value="$USER_HOME$/Documents/scripts/ux_test" />
+      </list>
+    </option>
+    <option name="lastPath" value="$USER_HOME$/Documents/scripts/ux_test" />
+    <option name="pid" value="24267" />
+    <option name="additionalInfo">
+      <map>
+        <entry key="$USER_HOME$/Documents/scripts/ux_test">
+          <value>
+            <RecentProjectMetaInfo>
+              <option name="build" value="PY-173.3188.29" />
+              <option name="productionCode" value="PY" />
+              <option name="eap" value="true" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="projectOpenTimestamp" value="1508173497711" />
+              <option name="buildTimestamp" value="1507751799967" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="lastProjectLocation" value="$USER_HOME$/Documents/scripts" />
+  </component>
+</application>
