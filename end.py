@@ -27,14 +27,16 @@ if not Path(RECORDINGS_FOLDER).is_dir():
 # Get the sequence number for the next recording
 # Recordings folders should be named '01 - <Name>', '02 - <Name>', etc.
 
-directories = filter(os.path.isdir, os.listdir(RECORDINGS_FOLDER))
+# This gets all subdirectories of RECORDINGS_FOLDER
+# See https://stackoverflow.com/questions/141291/how-to-list-only-top-level-directories-in-python
+directories = next(os.walk(RECORDINGS_FOLDER))[1]
 
 next_number = -1
 if not directories:
     next_number = 0
 else:
     for directory in directories:
-        number_path = re.search('$(\d{2})', directory)
+        number_path = re.search('^(\d{2})', directory)
         if number_path is None:
             continue
 

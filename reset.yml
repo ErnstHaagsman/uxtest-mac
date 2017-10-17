@@ -10,6 +10,11 @@
   tasks:
     - name: Kill PyCharm
       command: killall pycharm
+      ignore_errors: yes
+
+    - name: Pause to wait until PyCharm is (likely) killed
+      pause:
+        seconds: 5
 
     - name: Get the code from GitHub
       git:
@@ -89,3 +94,8 @@
         src: files/end.command
         dest: "/Users/{{ user }}/Desktop/End.command"
         mode: 0755
+
+    - name: Ensure Vagrant is up
+      command: vagrant up
+      args:
+        chdir: "/Users/{{ user }}/Documents/scripts/reddit/"

@@ -1,2 +1,3 @@
 #!/bin/bash
-~/Documents/scripts/ux_test/end.py
+cd ~/Documents/scripts/ux_test/
+./end.py
