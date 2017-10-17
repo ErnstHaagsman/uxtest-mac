@@ -4,6 +4,7 @@
   vars:
     user: pyconde
     workdir: "/Users/{{ user }}/Documents/scripts"
+    venv_dir: "{{ workdir }}/venv"
     code_checkout: "{{ workdir }}/code"
     code_desktop: "/Users/{{ user }}/Desktop/code"
     product_dir: "PyCharm2017.3"
@@ -16,31 +17,37 @@
         version: bugs
         force: yes
 
-    - name: Get python user base
-      shell: python -m site --user-base
-      register: user_base_output
-
-    - set_fact:
-        user_base: "{{ user_base_output.stdout }}"
-
-    - name: Template profile
-      template:
-        src: templates/.profile
-        dest: "/Users/{{ user }}/.profile"
-
-    - name: Update setuptools
+    - name: Update setuptools, and devpi
       pip:
-        name: setuptools
+        name:
+          - setuptools
+          - devpi-server
         state: latest
-        extra_args: --user
+        virtualenv: "{{ venv_dir }}"
+        virtualenv_python: python3
 
-    - name: Install devpi
-      pip:
-        name: devpi-server
-        extra_args: --user
+    - name: Initialize devpi
+      command: "{{ venv_dir }}/bin/devpi-server --init"
+      args:
+        creates: "/Users/{{ user }}/.devpi"
 
     - name: Start devpi
-      command: devpi-server --start
-      environment:
-        PATH: "{{ user_base }}/bin:{{ ansible_env.PATH }}"
+      command: "{{ venv_dir }}/bin/devpi-server --start"
 
+    - name: Make sure we have a pip config directory
+      file:
+        path: "/Users/{{ user }}/Library/Application Support/pip"
+        state: directory
+
+    - name: Copy pip config
+      copy:
+        src: files/pip.conf
+        dest: "/Users/{{ user }}/Library/Application Support/pip/pip.conf"
+
+    - name: Preload Python packages needed during the test
+      pip:
+        name:
+          - selenium
+        state: latest
+        virtualenv: "/tmp/test_venv_temporary"
+        virtualenv_python: python3
