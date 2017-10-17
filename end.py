@@ -21,8 +21,8 @@ with open('name.txt', 'r') as f:
 
 
 # Create the recordings directory if it doesn't exist
-if not Path(CAMTASIA_FOLDER).is_dir():
-    os.mkdir(CAMTASIA_FOLDER)
+if not Path(RECORDINGS_FOLDER).is_dir():
+    os.mkdir(RECORDINGS_FOLDER)
 
 # Get the sequence number for the next recording
 # Recordings folders should be named '01 - <Name>', '02 - <Name>', etc.

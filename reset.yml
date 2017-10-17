@@ -41,7 +41,7 @@
       copy:
         src: files/geckodriver
         dest: "{{ code_desktop }}/geckodriver"
-	mode: 0755
+        mode: 0755
 
     - name: Remove PycharmProjects
       file:
@@ -87,5 +87,5 @@
     - name: Copy end
       copy:
         src: files/end.command
-        dest: "/Users/{{ user }}/Desktop/Start.command"
+        dest: "/Users/{{ user }}/Desktop/End.command"
         mode: 0755
