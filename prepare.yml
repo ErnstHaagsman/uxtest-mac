@@ -51,3 +51,8 @@
         state: latest
         virtualenv: "/tmp/test_venv_temporary"
         virtualenv_python: python3
+
+    - name: Make sure recordings directory exists
+      file:
+        name: "{{ workdir }}/recordings"
+        state: directory

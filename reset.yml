@@ -8,6 +8,9 @@
     code_desktop: "/Users/{{ user }}/Desktop/code"
     product_dir: "PyCharm2017.3"
   tasks:
+    - name: Kill PyCharm
+      command: killall pycharm
+
     - name: Get the code from GitHub
       git:
         repo: https://github.com/ErnstHaagsman/selenium_experiment.git
@@ -38,6 +41,7 @@
       copy:
         src: files/geckodriver
         dest: "{{ code_desktop }}/geckodriver"
+	mode: 0755
 
     - name: Remove PycharmProjects
       file:
@@ -68,3 +72,20 @@
       copy:
         src: "files/{{ product_dir }}"
         dest: "/Users/{{ user }}/Library/Preferences/{{ product_dir }}"
+
+    - name: Copy instructions
+      copy:
+        src: files/Instructions.pdf
+        dest: "/Users/{{ user }}/Desktop/Instructions.pdf"
+
+    - name: Copy start
+      copy:
+        src: files/start.command
+        dest: "/Users/{{ user }}/Desktop/Start.command"
+        mode: 0755
+
+    - name: Copy end
+      copy:
+        src: files/end.command
+        dest: "/Users/{{ user }}/Desktop/Start.command"
+        mode: 0755
