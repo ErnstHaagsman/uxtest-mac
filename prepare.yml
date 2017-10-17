@@ -15,3 +15,32 @@
         update: yes
         version: bugs
         force: yes
+
+    - name: Get python user base
+      shell: python -m site --user-base
+      register: user_base_output
+
+    - set_fact:
+        user_base: "{{ user_base_output.stdout }}"
+
+    - name: Template profile
+      template:
+        src: templates/.profile
+        dest: "/Users/{{ user }}/.profile"
+
+    - name: Update setuptools
+      pip:
+        name: setuptools
+        state: latest
+        extra_args: --user
+
+    - name: Install devpi
+      pip:
+        name: devpi-server
+        extra_args: --user
+
+    - name: Start devpi
+      command: devpi-server --start
+      environment:
+        PATH: "{{ user_base }}/bin:{{ ansible_env.PATH }}"
+
