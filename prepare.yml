@@ -5,6 +5,7 @@
     user: pyconde
     workdir: "/Users/{{ user }}/Documents/scripts"
     venv_dir: "{{ workdir }}/venv"
+    reddit_dir: "{{ workdir }}/reddit"
     code_checkout: "{{ workdir }}/code"
     code_desktop: "/Users/{{ user }}/Desktop/code"
     product_dir: "PyCharm2017.3"
@@ -57,3 +58,16 @@
       file:
         name: "{{ workdir }}/recordings"
         state: directory
+
+    - name: Ensure latest version of Reddit is checked out
+      git:
+        repo: https://github.com/ErnstHaagsman/reddit.git
+        dest: "{{ reddit_dir }}"
+        update: yes
+        version: test
+        force: yes
+
+    - name: Vagrant up for initial setup
+      command: vagrant up
+      args:
+        chdir: "{{ reddit_dir }}"

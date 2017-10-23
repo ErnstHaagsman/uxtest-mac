@@ -4,6 +4,7 @@
   vars:
     user: pyconde
     workdir: "/Users/{{ user }}/Documents/scripts"
+    venv_dir: "{{ workdir }}/venv"
     code_checkout: "{{ workdir }}/code"
     code_desktop: "/Users/{{ user }}/Desktop/code"
     product_dir: "PyCharm2017.3"
