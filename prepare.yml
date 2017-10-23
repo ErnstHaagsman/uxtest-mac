@@ -25,6 +25,7 @@
         state: latest
         virtualenv: "{{ venv_dir }}"
         virtualenv_python: python3
+        extra_args: --index-url https://pypi.python.org/simple
 
     - name: Initialize devpi
       command: "{{ venv_dir }}/bin/devpi-server --init"

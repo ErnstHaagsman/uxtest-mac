@@ -12,6 +12,10 @@
       command: killall pycharm
       ignore_errors: yes
 
+    - name: Kill Firefox
+      command: killall firefox
+      ignore_errors: yes
+
     - name: Pause to wait until PyCharm is (likely) killed
       pause:
         seconds: 5
@@ -94,6 +98,9 @@
         src: files/end.command
         dest: "/Users/{{ user }}/Desktop/End.command"
         mode: 0755
+
+    - name: Start devpi
+      command: "{{ venv_dir }}/bin/devpi-server --start"
 
     - name: Ensure Vagrant is up
       command: vagrant up
