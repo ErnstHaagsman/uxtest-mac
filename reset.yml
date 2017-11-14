@@ -78,11 +78,6 @@
         path: "/Users/{{ user }}/Logs/{{ product_dir }}"
         state: absent
 
-    - name: Remove IDE caches
-      file:
-        path: "/Users/{{ user }}/Library/Caches/{{ product_dir }}"
-        state: absent
-
     - name: Copy IDE settings
       copy:
         src: "files/{{ product_dir }}"
