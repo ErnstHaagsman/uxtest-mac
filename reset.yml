@@ -47,6 +47,11 @@
         path: "{{ code_desktop }}/.git"
         state: absent
 
+    - name: Make sure there's no .idea folder in desktop
+      file:
+        path: "/Users/{{ user }}/Desktop/.idea"
+        state: absent
+
     - name: Add Geckodriver
       copy:
         src: files/geckodriver
